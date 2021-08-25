@@ -9,6 +9,10 @@ export class AppConfigService {
   constructor() { }
 
   get catalogResourcesUrl(): string {
-    return environment.catalogResourcesUrl
+    return environment.catalogResourcesUrl;
+  }
+
+  get salesResourcesUrl(): string {
+    return environment.salesResourcesUrl;
   }
 }
