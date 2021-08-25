@@ -18,16 +18,16 @@ import {MatCardModule} from "@angular/material/card";
     NavBarComponent,
     FooterComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    RouterModule.forRoot([
-      {path: '', component: HomeComponent, pathMatch: 'full'}
-    ]),
-    MatToolbarModule,
-    MatTableModule,
-    MatCardModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        RouterModule.forRoot([
+            {path: '', component: HomeComponent, pathMatch: 'full'}
+        ]),
+        MatToolbarModule,
+        MatTableModule,
+        MatCardModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
