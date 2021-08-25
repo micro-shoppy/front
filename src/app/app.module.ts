@@ -10,13 +10,15 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import { FooterComponent } from './footer/footer.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavBarComponent,
-    FooterComponent
+    FooterComponent,
+    ProductListComponent
   ],
     imports: [
         BrowserModule,

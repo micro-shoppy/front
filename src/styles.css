@@ -3,3 +3,5 @@
 
 html, body { height: 100%; background-color: rgb(48, 48, 48); }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: white}
+a { text-underline: none;}
+a:visited { color: white;}
