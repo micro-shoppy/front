@@ -1,0 +1,5 @@
+<mat-grid-list cols="{{this.cols}}" [rowHeight]="'3:2'">
+  <mat-grid-tile *ngFor="let product of products" class="product">
+    <app-catalog-product [product]="product"></app-catalog-product>
+  </mat-grid-tile>
+</mat-grid-list>

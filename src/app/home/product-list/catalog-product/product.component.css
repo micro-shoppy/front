@@ -1,0 +1,7 @@
+.stuff {
+  display: flex;
+  flex-direction: column !important;
+  /*flex-wrap: nowrap;*/
+  /*align-items: stretch;*/
+  /*text-align: center;*/
+}
