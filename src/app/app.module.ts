@@ -11,9 +11,10 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {FooterComponent} from './footer/footer.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
-import {CatalogProductListComponent} from './home/product-list/catalog-product-list.component';
+import {ProductListComponent} from './home/product-list/product-list.component';
 import {MatGridListModule} from "@angular/material/grid-list";
-import { ProductComponent } from './home/product-list/catalog-product/product.component';
+import { ProductComponent } from './home/product-list/product/product.component';
+import { ProductViewComponent } from './product-view/product-view.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import { ProductComponent } from './home/product-list/catalog-product/product.co
     HomeComponent,
     NavBarComponent,
     FooterComponent,
-    CatalogProductListComponent,
-    ProductComponent
+    ProductListComponent,
+    ProductComponent,
+    ProductViewComponent
   ],
   imports: [
     BrowserModule,

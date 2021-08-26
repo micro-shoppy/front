@@ -7,6 +7,7 @@
     "build": "ng build",
     "start-catalog-mock": "json-server --watch catalog-data.json --routes routes.json --port 8081",
     "start-sales-mock": "json-server --watch sales-data.json --routes routes.json --port 8088",
+    "start-mocks": "json-server --watch catalog-data.json --routes routes.json --port 8081 | json-server --watch sales-data.json --routes routes.json --port 8088 | ng serve",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

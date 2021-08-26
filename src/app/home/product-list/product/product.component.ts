@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CatalogProduct} from "../../../common/entities/catalog-product";
+import {Product} from "../../../common/entities/product";
 
 @Component({
   selector: 'app-catalog-product',
@@ -8,11 +8,12 @@ import {CatalogProduct} from "../../../common/entities/catalog-product";
 })
 export class ProductComponent implements OnInit {
   @Input()
-  product: CatalogProduct
+  product: Product
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.product)
   }
 
 }

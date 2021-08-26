@@ -13,7 +13,7 @@ export class SalesProductsServiceService {
   constructor(private http: HttpClient, private env: AppConfigService) { }
 
   public getAllSalesProducts(): Observable<SalesProduct[]> {
-    return this.http.get(this.env.catalogResourcesUrl)
+    return this.http.get(this.env.salesResourcesUrl)
       .pipe(
         map(response => Object.assign([], response)),
         map(response => response.map(data => Object.assign(new SalesProduct(), data))),
