@@ -8,6 +8,15 @@ export class Product {
   readonly photo: string;
   readonly netPrice: number;
   readonly taxPercentage: number;
+
+  static readonly placeholder: Product = Object.assign(new Product(), {
+    name: 'Loading...',
+    description: 'Loading...',
+    photo: 'loading_photo.jpg',
+    netPrice: -1,
+    taxPercentage: -100,
+    productId: 0
+  })
 }
 
 export function mergeProducts(catalogProduct: CatalogProduct, salesProduct: SalesProduct): Product {

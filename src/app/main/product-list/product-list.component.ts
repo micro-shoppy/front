@@ -14,7 +14,7 @@ import {mergeProducts, Product} from "../../common/entities/product";
 export class ProductListComponent implements OnInit, OnDestroy {
   @Input()
   cols: number;
-  $products: Subscription;
+  products$: Subscription;
   products: Product[];
 
   constructor(private catalogProductService: CatalogProductsService,
@@ -23,7 +23,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.products = [];
     console.log('Fetching products...')
-    this.$products = combineLatest([this.catalogProductService.getAllCatalogProducts(), this.salesProductService.getAllSalesProducts()])
+    this.products$ = combineLatest([this.catalogProductService.getAllCatalogProducts(), this.salesProductService.getAllSalesProducts()])
       .subscribe(([catalogs, sales]: [CatalogProduct[], SalesProduct[]]) => {
         if (catalogs.length > 0 && sales.length > 0) {
           catalogs.forEach(c =>
@@ -33,7 +33,7 @@ export class ProductListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.$products.unsubscribe();
+    this.products$.unsubscribe();
   }
 
 }

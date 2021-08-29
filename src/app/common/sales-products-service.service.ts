@@ -19,4 +19,11 @@ export class SalesProductsServiceService {
         map(response => response.map(data => Object.assign(new SalesProduct(), data))),
         share());
   }
+
+  public getSalesProduct(productId: string): Observable<SalesProduct> {
+    return this.http.get(`${this.env.salesResourcesUrl}/${productId}`)
+      .pipe(
+        map(response => Object.assign(new SalesProduct(), response)),
+        share());
+  }
 }

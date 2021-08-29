@@ -1,0 +1,7 @@
+<div class="productView">
+  <img src="{{product.photo}}" alt="Product {{product.productId}} with photo {{product.photo}}" style="grid-area: photo"/>
+  <h1 style="grid-area: name">{{product.name}}</h1>
+  <h2 style="grid-area: desc">{{product.description}}</h2>
+  <button mat-raised-button color="primary" style="grid-area: cart" (click)="addToCart(product.productId)">Add to cart <i class="fas fa-shopping-cart"></i></button>
+  <h2 style="grid-area: price"><i class="fas fa-dollar-sign"></i> {{(product.netPrice * (1 + product.taxPercentage/100)).toFixed(2)}}</h2>
+</div>

@@ -2,4 +2,5 @@
   <img src="{{product.photo}}" alt="Product {{product.productId}} with photo {{product.photo}}"/>
   <h1>{{product.name}}</h1>
   <h2>{{product.description.substring(0, 100)}}</h2>
+  <span><i class="fas fa-dollar-sign"></i> {{(product.netPrice * (1 + product.taxPercentage/100)).toFixed(2)}}</span>
 </div>

@@ -1,0 +1,7 @@
+.productView {
+  display: grid;
+  grid-template-areas:
+    "photo name price"
+    "photo . cart"
+    "desc desc desc";
+}
