@@ -1,6 +1,35 @@
-<div *ngIf="this.cart.length <= 0">
+<div *ngIf="this.cart.length <= 0; else tableBlock">
   <h2>Your cart is empty, add some products first...</h2>
 </div>
-<li *ngFor="let product of this.cart">
-  <span></span>
-</li>
+
+<ng-template #tableBlock>
+  <table  mat-table [dataSource]="cart" class="mat-elevation-z8" style="margin-bottom: 2vw">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let product"> {{product.name}} </td>
+    </ng-container>
+
+    <!-- Net price Column -->
+    <ng-container matColumnDef="net">
+      <th mat-header-cell *matHeaderCellDef> Net price </th>
+      <td mat-cell *matCellDef="let product"> {{product.netPrice}} </td>
+    </ng-container>
+
+    <!-- Gross price Column -->
+    <ng-container matColumnDef="gross">
+      <th mat-header-cell *matHeaderCellDef> Gross price </th>
+      <td mat-cell *matCellDef="let product"> {{product.grossPrice.toFixed(2)}} </td>
+    </ng-container>
+
+    <!-- Remove item Column -->
+    <ng-container matColumnDef="remove">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let product" style="text-align: right"><button mat-button (click)="removeFromCart(product.id)"><i class="fas fa-trash-alt"></i></button></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+</ng-template>
+

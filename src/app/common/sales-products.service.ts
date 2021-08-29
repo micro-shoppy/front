@@ -8,7 +8,7 @@ import {SalesProduct} from "./entities/sales-product";
 @Injectable({
   providedIn: 'root'
 })
-export class SalesProductsServiceService {
+export class SalesProductsService {
 
   constructor(private http: HttpClient, private env: AppConfigService) { }
 

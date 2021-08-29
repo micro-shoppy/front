@@ -1,8 +1,10 @@
 import {Action} from "@ngrx/store";
 import {initialSettings, ShoppingCartSettings} from "./settings";
 import {ActionTypes, AddToCart, RemoveFromCart} from "./shopping-cart.actions";
+import * as _ from "lodash";
 
 export function shoppingCartReducer(state = initialSettings, action:Action): ShoppingCartSettings {
+  console.log(action.type);
   switch (action.type) {
     case ActionTypes.AddToCart:
       return <ShoppingCartSettings> {
@@ -11,11 +13,9 @@ export function shoppingCartReducer(state = initialSettings, action:Action): Sho
       };
 
     case ActionTypes.RemoveFromCart:
-      const products: string[] = state.products;
-      removeFromCart(products, (<RemoveFromCart>action).payload.item)
       return <ShoppingCartSettings> {
         ...state,
-        products: products
+        products: removeFromCart(state.products, (<RemoveFromCart>action).payload.item)
       };
 
     case ActionTypes.ResetCart:
@@ -29,7 +29,9 @@ export function shoppingCartReducer(state = initialSettings, action:Action): Sho
   }
 }
 
-function removeFromCart(products: string[], item: string): void {
-  const indexToRemove = products.findIndex(p => p === item);
-  products.splice(indexToRemove, 1);
+function removeFromCart(products: string[], item: string): string[] {
+  let arr = _.cloneDeep(products);
+  const indexToRemove = arr.findIndex(p => p === item);
+  arr.splice(indexToRemove, 1);
+  return arr;
 }

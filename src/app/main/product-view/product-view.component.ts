@@ -1,17 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {mergeProducts, Product} from "../../common/entities/product";
-import {CatalogProductsService} from "../../common/catalog-products.service";
-import {SalesProductsServiceService} from "../../common/sales-products-service.service";
-import {combineLatest, Subscription} from "rxjs";
-import {CatalogProduct} from "../../common/entities/catalog-product";
-import {SalesProduct} from "../../common/entities/sales-product";
+import {Product} from "../../common/entities/product";
+import {Subscription} from "rxjs";
 import {HttpErrorResponse} from "@angular/common/http";
 import {Store} from "@ngrx/store";
 import {ShoppingCartSettings} from "../shopping-cart/settings/settings";
 import {selectSettings} from "../shopping-cart/settings/shopping-cart.selectors";
 import * as _ from "lodash";
 import {AddToCart} from "../shopping-cart/settings/shopping-cart.actions";
+import {ProductsService} from "../../common/products.service";
 
 @Component({
   selector: 'app-product-view',
@@ -20,13 +17,12 @@ import {AddToCart} from "../shopping-cart/settings/shopping-cart.actions";
 })
 export class ProductViewComponent implements OnInit, OnDestroy {
   productId: string;
-  product: Product = Product.placeholder  ;
+  product: Product = Product.placeholder;
   product$: Subscription;
   cartSettings: ShoppingCartSettings;
 
   constructor(private router: Router, private route: ActivatedRoute,
-              private catalogProductService: CatalogProductsService,
-              private salesProductService: SalesProductsServiceService,
+              private productService: ProductsService,
               private store: Store<ShoppingCartSettings>) {
     this.store.select(selectSettings).subscribe(settings => this.cartSettings = _.cloneDeep(settings));
   }
@@ -34,21 +30,15 @@ export class ProductViewComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.productId = params['id'];
-      this.product$ = combineLatest([
-        this.catalogProductService.getCatalogProduct(this.productId),
-        this.salesProductService.getSalesProduct(this.productId)])
-        .subscribe(([catalog, sale]: [CatalogProduct, SalesProduct]) => {
-          if (catalog !== undefined && sale !== undefined) {
-              this.product = mergeProducts(catalog, sale);
-          }
-        },
-          error => {
+      this.product$ = this.productService.getProduct(this.productId).subscribe(
+        product => this.product = product,
+        error => {
           if (error instanceof HttpErrorResponse) {
             if (error.status === 404) {
               console.log('Product doesn\'t exist...')
             }
           }
-          });
+        });
     });
   }
 
