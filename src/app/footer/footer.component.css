@@ -6,3 +6,7 @@
 .bottom {
   padding-bottom: 2vw;
 }
+
+a {
+  text-decoration: underline;
+}

@@ -8,7 +8,7 @@ import {SalesProduct} from "./entities/sales-product";
 @Injectable({
   providedIn: 'root'
 })
-export class SalesProductsServiceService {
+export class SalesProductsService {
 
   constructor(private http: HttpClient, private env: AppConfigService) { }
 
@@ -17,6 +17,13 @@ export class SalesProductsServiceService {
       .pipe(
         map(response => Object.assign([], response)),
         map(response => response.map(data => Object.assign(new SalesProduct(), data))),
+        share());
+  }
+
+  public getSalesProduct(productId: string): Observable<SalesProduct> {
+    return this.http.get(`${this.env.salesResourcesUrl}/${productId}`)
+      .pipe(
+        map(response => Object.assign(new SalesProduct(), response)),
         share());
   }
 }

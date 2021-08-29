@@ -19,4 +19,11 @@ export class CatalogProductsService {
         map(response => response.map(data => Object.assign(new CatalogProduct(), data))),
         share());
   }
+
+  public getCatalogProduct(productId: string): Observable<CatalogProduct> {
+    return this.http.get(`${this.env.catalogResourcesUrl}/${productId}`)
+      .pipe(
+        map(response => Object.assign(new CatalogProduct(), response)),
+        share());
+  }
 }
