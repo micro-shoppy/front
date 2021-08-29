@@ -32,6 +32,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   removeFromCart(item: string): void {
+    console.log(`Removed ${item} from cart`)
     this.store.dispatch(new RemoveFromCart({item: item}));
   }
 

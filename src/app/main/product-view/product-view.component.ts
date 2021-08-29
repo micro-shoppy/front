@@ -47,6 +47,7 @@ export class ProductViewComponent implements OnInit, OnDestroy {
   }
 
   addToCart(item: string): void {
+    console.log(`Added ${item} to cart`)
     this.store.dispatch(new AddToCart({item: item}));
   }
 

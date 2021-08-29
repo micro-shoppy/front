@@ -4,7 +4,6 @@ import {ActionTypes, AddToCart, RemoveFromCart} from "./shopping-cart.actions";
 import * as _ from "lodash";
 
 export function shoppingCartReducer(state = initialSettings, action:Action): ShoppingCartSettings {
-  console.log(action.type);
   switch (action.type) {
     case ActionTypes.AddToCart:
       return <ShoppingCartSettings> {
