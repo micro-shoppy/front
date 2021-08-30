@@ -6,6 +6,12 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+### Development mocks
+
+To make developing easier we added mocks of our services, so you can run front without dockering all services.\
+We used [JSON Server](https://github.com/typicode/json-server) with proper `x-data.json` where `x` is mocked service and with `routes.json`.\
+Run  `json-server --watch <data-file.json> --routes <routes.json> --port <proper port>` or just use ours commands `start-x-mock`
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
