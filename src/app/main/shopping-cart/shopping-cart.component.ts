@@ -6,6 +6,7 @@ import {RemoveFromCart, ResetCart} from "./settings/shopping-cart.actions";
 import {ProductsService} from "../../common/products.service";
 import {Product} from "../../common/entities/product";
 import {zip} from "rxjs";
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -31,6 +32,14 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get netSumPrice(): string {
+    return _.cloneDeep(this.cart).reduce((sum, currItem) => sum + currItem.netPrice, 0).toFixed(2);
+  }
+
+  get grossSumPrice(): string {
+    return _.cloneDeep(this.cart).reduce((sum, currItem) => sum + currItem.grossPrice, 0).toFixed(2);
+  }
+
   removeFromCart(item: string): void {
     console.log(`Removed ${item} from cart`)
     this.store.dispatch(new RemoveFromCart({item: item}));
@@ -38,5 +47,12 @@ export class ShoppingCartComponent implements OnInit {
 
   resetCart(): void {
     this.store.dispatch(new ResetCart());
+  }
+
+  checkout() {
+    /* TODO:
+    Send saga to rabbit about order
+     */
+
   }
 }
