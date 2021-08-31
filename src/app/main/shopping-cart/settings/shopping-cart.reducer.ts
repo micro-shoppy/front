@@ -4,23 +4,23 @@ import {ActionTypes, AddToCart, RemoveFromCart} from "./shopping-cart.actions";
 import {ShoppingCartItem} from "../../../common/entities/shopping-cart-item";
 import * as _ from "lodash";
 
-export function shoppingCartReducer(state = initialSettings, action:Action): ShoppingCartSettings {
+export function shoppingCartReducer(state = initialSettings, action: Action): ShoppingCartSettings {
   switch (action.type) {
     case ActionTypes.AddToCart:
-      return <ShoppingCartSettings> {
+      return <ShoppingCartSettings>{
         ...state,
         products: addToCart(state.products, (<AddToCart>action).payload.item)
       };
 
-    case ActionTypes.RemoveFromCart: {
-      return <ShoppingCartSettings> {
+    case ActionTypes.RemoveFromCart:
+      return <ShoppingCartSettings>{
         ...state,
         products: removeFromCart(state.products, (<RemoveFromCart>action).payload.item)
       };
-    }
+
 
     case ActionTypes.ResetCart:
-      return <ShoppingCartSettings> {
+      return <ShoppingCartSettings>{
         ...state,
         products: []
       };
@@ -36,8 +36,7 @@ function removeFromCart(shoppingCart: ShoppingCartItem[], item: string): Shoppin
   if (itemToRemove !== undefined) {
     if (itemToRemove.amount == 1) {
       cart = cart.filter(i => i.productId != item);
-    }
-    else {
+    } else {
       itemToRemove.amount = itemToRemove.amount - 1;
     }
   }
@@ -52,8 +51,7 @@ function addToCart(shoppingCart: ShoppingCartItem[], item: string): ShoppingCart
       productId: item,
       amount: 1
     }))
-  }
-  else {
+  } else {
     itemToAdd.amount = itemToAdd.amount + 1;
   }
   return cart;
