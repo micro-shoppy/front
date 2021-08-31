@@ -1,5 +1,7 @@
+import {ShoppingCartItem} from "../../../common/entities/shopping-cart-item";
+
 export class ShoppingCartSettings {
-  products: string[];
+  products: ShoppingCartItem[]
 }
 
 export const initialSettings: ShoppingCartSettings = {

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Store} from "@ngrx/store";
 import {ShoppingCartSettings} from "./settings/settings";
 import {selectSettings} from "./settings/shopping-cart.selectors";
-import {RemoveFromCart, ResetCart} from "./settings/shopping-cart.actions";
+import {AddToCart, RemoveFromCart, ResetCart} from "./settings/shopping-cart.actions";
 import {ProductsService} from "../../common/products.service";
 import {Product} from "../../common/entities/product";
 import {zip} from "rxjs";
@@ -14,8 +14,8 @@ import * as _ from "lodash";
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-  cart: Product[] = [];
-  columns: string[] = ['name', 'net', 'gross', 'remove'];
+  cart: [Product, number][] = [];
+  columns: string[] = ['name', 'amount', 'net', 'gross', 'remove'];
 
   constructor(private store: Store<ShoppingCartSettings>,
               private productsService: ProductsService) {
@@ -23,8 +23,8 @@ export class ShoppingCartComponent implements OnInit {
       if (settings.products.length == 0) {
         this.cart = [];
       } else {
-        zip(...settings.products.map(productId => productsService.getProduct(productId)))
-          .subscribe(list => this.cart = list);
+        zip(...settings.products.map(product => productsService.getProduct(product.productId)))
+          .subscribe(list => this.cart = list.map(item => [item, settings.products.find(product => product.productId == item.id).amount]));
       }
     })
   }
@@ -33,11 +33,17 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   get netSumPrice(): string {
-    return _.cloneDeep(this.cart).reduce((sum, currItem) => sum + currItem.netPrice, 0).toFixed(2);
+    return _.cloneDeep(this.cart).reduce((sum, currItem) => sum + currItem[0].netPrice * currItem[1], 0).toFixed(2);
   }
 
   get grossSumPrice(): string {
-    return _.cloneDeep(this.cart).reduce((sum, currItem) => sum + currItem.grossPrice, 0).toFixed(2);
+    return _.cloneDeep(this.cart).reduce((sum, currItem) => sum + currItem[0].grossPrice * currItem[1], 0).toFixed(2);
+  }
+
+  addToCart(item: string): void {
+    console.log(`Added ${item} to cart`)
+    this.store.dispatch(new AddToCart({item: item}));
+
   }
 
   removeFromCart(item: string): void {
@@ -51,7 +57,7 @@ export class ShoppingCartComponent implements OnInit {
 
   checkout() {
     /* TODO:
-    Send saga to rabbit about order
+    Send message to sales service
      */
 
   }
