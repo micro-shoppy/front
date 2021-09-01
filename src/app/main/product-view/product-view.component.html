@@ -1,5 +1,4 @@
 <div class="productView">
-  <img src="{{product.photo}}" alt="Product {{product.id}} with photo {{product.photo}}" style="grid-area: photo"/>
   <h1 style="grid-area: name">{{product.name}}</h1>
   <h2 style="grid-area: desc">{{product.description}}</h2>
   <button mat-raised-button color="primary" style="grid-area: cart" (click)="addToCart(product.id)">Add to cart <i class="fas fa-shopping-cart"></i></button>

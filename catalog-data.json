@@ -3,86 +3,72 @@
     {
       "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
       "name": "Stuff 1",
-      "description": "Description of stuff  1",
-      "photo": "photo_of_stuff_1.jpg"
+      "description": "Description of stuff  1"
     },
     {
       "productId": "663cf655-1e48-4c9c-a4b4-e711bddca8f6",
       "name": "Stuff 2",
-      "description": "Description of stuff  2",
-      "photo": "photo_of_stuff_2.jpg"
+      "description": "Description of stuff  2"
     },
     {
       "productId": "faba7b51-0a7d-4acf-86b8-35d4f62a7eb5",
       "name": "Stuff 3",
-      "description": "Description of stuff  3",
-      "photo": "photo_of_stuff_3.jpg"
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin non orci a cursus. Sed tempor dui enim, nec ultricies felis commodo non. Nulla cursus, tellus vel volutpat laoreet, quam erat placerat orci, sed dapibus risus arcu non sapien. Vivamus eu lacus ante. Aliquam erat volutpat. Mauris eu augue aliquam."
     },
     {
       "productId": "6fb870ce-51fb-4665-b441-9279ecbb8aff",
       "name": "Stuff 4",
-      "description": "Description of stuff 4",
-      "photo": "photo_of_stuff_4.jpg"
+      "description": "Description of stuff 4"
     },
     {
       "productId": "989b6c34-912e-4c4e-9a11-82c0edc053e3",
       "name": "Stuff 5",
-      "description": "Description of stuff  5",
-      "photo": "photo_of_stuff_5.jpg"
+      "description": "Description of stuff  5"
     },
     {
       "productId": "7237d6e9-4339-473a-8db1-a8a9a19fa26d",
       "name": "Stuff 6",
-      "description": "Description of stuff  6",
-      "photo": "photo_of_stuff_6.jpg"
+      "description": "Description of stuff  6"
     },
     {
       "productId": "2a56c4ff-e069-453c-aa78-cdef249c42cf",
       "name": "Stuff 7",
-      "description": "Description of stuff  7",
-      "photo": "photo_of_stuff_7.jpg"
+      "description": "Description of stuff  7"
     }
   ],
   "3fa85f64-5717-4562-b3fc-2c963f66afa6": {
     "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "name": "Stuff 1",
-    "description": "Description of stuff  1",
-    "photo": "photo_of_stuff_1.jpg"
+    "description": "Description of stuff  1"
   },
   "663cf655-1e48-4c9c-a4b4-e711bddca8f6": {
     "productId": "663cf655-1e48-4c9c-a4b4-e711bddca8f6",
     "name": "Stuff 2",
-    "description": "Description of stuff  2",
-    "photo": "photo_of_stuff_2.jpg"
+    "description": "Description of stuff  2"
   },
   "faba7b51-0a7d-4acf-86b8-35d4f62a7eb5": {
     "productId": "faba7b51-0a7d-4acf-86b8-35d4f62a7eb5",
     "name": "Stuff 3",
-    "description": "Description of stuff  3",
-    "photo": "photo_of_stuff_3.jpg"
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin non orci a cursus. Sed tempor dui enim, nec ultricies felis commodo non. Nulla cursus, tellus vel volutpat laoreet, quam erat placerat orci, sed dapibus risus arcu non sapien. Vivamus eu lacus ante. Aliquam erat volutpat. Mauris eu augue aliquam."
   },
   "6fb870ce-51fb-4665-b441-9279ecbb8aff": {
     "productId": "6fb870ce-51fb-4665-b441-9279ecbb8aff",
     "name": "Stuff 4",
-    "description": "Description of stuff 4",
-    "photo": "photo_of_stuff_4.jpg"
+    "description": "Description of stuff 4"
   },
   "989b6c34-912e-4c4e-9a11-82c0edc053e3": {
     "productId": "989b6c34-912e-4c4e-9a11-82c0edc053e3",
     "name": "Stuff 5",
-    "description": "Description of stuff  5",
-    "photo": "photo_of_stuff_5.jpg"
+    "description": "Description of stuff  5"
   },
   "7237d6e9-4339-473a-8db1-a8a9a19fa26d": {
     "productId": "7237d6e9-4339-473a-8db1-a8a9a19fa26d",
     "name": "Stuff 6",
-    "description": "Description of stuff  6",
-    "photo": "photo_of_stuff_6.jpg"
+    "description": "Description of stuff  6"
   },
   "2a56c4ff-e069-453c-aa78-cdef249c42cf": {
     "productId": "2a56c4ff-e069-453c-aa78-cdef249c42cf",
     "name": "Stuff 7",
-    "description": "Description of stuff  7",
-    "photo": "photo_of_stuff_7.jpg"
+    "description": "Description of stuff  7"
   }
 }
