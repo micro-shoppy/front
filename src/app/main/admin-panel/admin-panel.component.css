@@ -1,0 +1,27 @@
+.product {
+  padding: 1em 3em;
+  width: 50%;
+  display: grid;
+  grid-template-areas:
+"name delete"
+"id delete";
+}
+
+button {
+  height: min-content;
+  width: min-content;
+  margin: auto;
+}
+
+.product {
+  background-color: rgb(194, 24, 91);
+  border-radius: .5em;
+  margin: 2em;
+}
+.product:hover,.selected{
+  background-color: red;
+}
+
+.selected:active {
+  background-color: darkred;
+}

@@ -1,0 +1,24 @@
+
+<h2>All products</h2>
+<div *ngFor="let product of products"
+    [class.selected]="product === selectedProduct"
+     class="product"
+    (click)="onSelect(product)">
+  <h2 style="grid-area: name">{{product.name}}</h2>
+  <h3 style="grid-area: id">{{product.id}}</h3>
+  <button mat-raised-button style="grid-area: delete"><i class="fas fa-trash"></i></button>
+</div>
+
+<div *ngIf="selectedProduct">
+
+  <h2>{{selectedProduct.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedProduct.id}}</div>
+  <div>
+<!--    <label for="hero-name">Hero name: </label>-->
+<!--    <input id="hero-name" [(ngModel)]="selectedProduct.name" placeholder="name">-->
+  </div>
+
+</div>
+
+<button mat-raised-button><i class="fas fa-plus"> Add item to catalog</i></button>
+<button mat-raised-button><i class="fas fa-minus"></i> Remove item from catalog</button>
