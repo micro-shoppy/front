@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {AppConfigService} from "./app-config.service";
-import {map, share, tap} from 'rxjs/operators'
+import {catchError, map, share, tap} from 'rxjs/operators'
 import {CatalogProduct} from "./entities/catalog-product";
-import {Observable} from "rxjs";
+import {Observable, of} from "rxjs";
 import {Product} from "./entities/product";
 
 @Injectable({
@@ -36,13 +36,13 @@ export class CatalogProductsService {
     const url = `${this.catalogURL}/${productId}`;
     console.log(url)
     return this.http.delete(url)
-      // .pipe(
-      //   map(() => {
-      //     console.log(`Product ${productId} removed successfully!`)
-      //     return true;
-      //   }),
-      //   catchError(() => of(false)), share()
-      // )
+      .pipe(
+        map(() => {
+          console.log(`Product ${productId} removed successfully!`)
+          return true;
+        }),
+        catchError(() => of(false)), share()
+      )
   }
 
   public addProduct(product: Product): Observable<boolean> {

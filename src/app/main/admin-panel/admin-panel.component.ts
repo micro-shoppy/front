@@ -26,7 +26,7 @@ export class AdminPanelComponent implements OnInit {
     dialogRef.afterClosed()
       .pipe(filter(result => result))
       .subscribe(() => {
-        this.catalogService.deleteProduct(product.productId);
+        this.catalogService.deleteProduct(product.productId).subscribe();
       })
   }
 
@@ -37,7 +37,7 @@ export class AdminPanelComponent implements OnInit {
         filter(result => result !== undefined),
         tap(() => console.log('Trying to add item...')))
       .subscribe( product => {
-        this.catalogService.addProduct(product);
+        this.catalogService.addProduct(product).subscribe();
       })
   }
 
