@@ -1,0 +1,7 @@
+<h2>All products</h2> <button mat-raised-button color="primary" (click)="tryToAddProduct()"><i class="fas fa-plus"> Add item to catalog</i></button>
+<div *ngFor="let product of products"
+     class="product">
+  <h2 style="grid-area: name">{{product.name}}</h2>
+  <h3 style="grid-area: id">{{product.productId}}</h3>
+  <button mat-raised-button style="grid-area: delete" (click)="tryToDeleteProduct(product)"><i class="fas fa-trash"></i></button>
+</div>

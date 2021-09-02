@@ -20,6 +20,13 @@ import { environment } from '../environments/environment';
 import { ShoppingCartComponent } from './main/shopping-cart/shopping-cart.component';
 import { shoppingCartReducer } from "./main/shopping-cart/settings/shopping-cart.reducer";
 import {MatButtonModule} from "@angular/material/button";
+import { AdminPanelComponent } from './main/admin-panel/admin-panel.component';
+import {FormsModule} from "@angular/forms";
+import { SureDialogComponent } from './main/admin-panel/sure-dialog/sure-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { AddProductComponent } from './main/admin-panel/add-product/add-product.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -29,7 +36,10 @@ import {MatButtonModule} from "@angular/material/button";
     ProductListComponent,
     ProductComponent,
     ProductViewComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    AdminPanelComponent,
+    SureDialogComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +47,7 @@ import {MatButtonModule} from "@angular/material/button";
     RouterModule.forRoot([
       {path: '', component: ProductListComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent, pathMatch: 'full'},
+      {path: 'admin-panel', component: AdminPanelComponent, pathMatch: 'full'},
       {path: ':id', component: ProductViewComponent}
     ]),
     HttpClientModule,
@@ -47,7 +58,11 @@ import {MatButtonModule} from "@angular/material/button";
     StoreModule.forRoot({}),
     StoreModule.forFeature('shopping-cart', shoppingCartReducer),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,10 +3,10 @@ import {SalesProduct} from "./sales-product";
 
 export class Product {
   readonly id: string;
-  readonly name: string;
-  readonly description: string;
-  readonly netPrice: number;
-  readonly taxPercentage: number;
+  name: string;
+  description: string;
+  netPrice: number;
+  taxPercentage: number;
 
   static readonly placeholder: Product = Object.assign(new Product(), {
     name: 'Loading...',
