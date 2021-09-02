@@ -22,6 +22,11 @@ import { shoppingCartReducer } from "./main/shopping-cart/settings/shopping-cart
 import {MatButtonModule} from "@angular/material/button";
 import { AdminPanelComponent } from './main/admin-panel/admin-panel.component';
 import {FormsModule} from "@angular/forms";
+import { SureDialogComponent } from './main/admin-panel/sure-dialog/sure-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import { AddProductComponent } from './main/admin-panel/add-product/add-product.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -32,7 +37,9 @@ import {FormsModule} from "@angular/forms";
     ProductComponent,
     ProductViewComponent,
     ShoppingCartComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    SureDialogComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,10 @@ import {FormsModule} from "@angular/forms";
     StoreModule.forFeature('shopping-cart', shoppingCartReducer),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

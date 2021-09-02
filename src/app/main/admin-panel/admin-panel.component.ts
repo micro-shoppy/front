@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {ProductsService} from "../../common/products.service";
-import {Product} from "../../common/entities/product";
+import {CatalogProductsService} from "../../common/catalog-products.service";
+import {CatalogProduct} from "../../common/entities/catalog-product";
+import {MatDialog} from "@angular/material/dialog";
+import {SureDialogComponent} from "./sure-dialog/sure-dialog.component";
+import {filter, tap} from "rxjs/operators";
+import {AddProductComponent} from "./add-product/add-product.component";
 
 @Component({
   selector: 'app-admin-panel',
@@ -8,17 +12,33 @@ import {Product} from "../../common/entities/product";
   styleUrls: ['./admin-panel.component.css']
 })
 export class AdminPanelComponent implements OnInit {
-  products: Product[] = [];
-  selectedProduct: Product;
+  products: CatalogProduct[] = [];
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private dialog: MatDialog,
+              private catalogService: CatalogProductsService) { }
 
   ngOnInit(): void {
-    this.productsService.getAllProducts().subscribe(fetchedProducts => this.products = fetchedProducts);
+    this.catalogService.getAllCatalogProducts().subscribe(fetchedProducts => this.products = fetchedProducts);
   }
 
-  onSelect(product: Product): void {
-    this.selectedProduct = product;
+  tryToDeleteProduct(product: CatalogProduct): void {
+    const dialogRef = this.dialog.open(SureDialogComponent, {data: product});
+    dialogRef.afterClosed()
+      .pipe(filter(result => result))
+      .subscribe(() => {
+        this.catalogService.deleteProduct(product.productId);
+      })
+  }
+
+  tryToAddProduct(): void {
+    const dialogRef = this.dialog.open(AddProductComponent);
+    dialogRef.afterClosed()
+      .pipe(
+        filter(result => result !== undefined),
+        tap(() => console.log('Trying to add item...')))
+      .subscribe( product => {
+        this.catalogService.addProduct(product);
+      })
   }
 
 }

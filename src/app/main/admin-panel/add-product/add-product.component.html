@@ -1,0 +1,26 @@
+<h2 mat-dialog-title>Add product</h2>
+
+<mat-dialog-content class="column-layout">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="product.name"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput [(ngModel)]="product.description"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Net price</mat-label>
+    <input matInput [(ngModel)]="product.netPrice"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Tax percentage</mat-label>
+    <mat-label matSuffix>%</mat-label>
+    <input matInput [(ngModel)]="product.taxPercentage"/>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onCancelClick()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onOkClick()">OK</button>
+</mat-dialog-actions>

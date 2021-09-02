@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Deleting product</h2>
+
+<span>Are you sure you want to delete <br/>
+  product: {{product.name}}<br/>
+  id: {{product.productId}}<br/>
+  description: {{product.description}}</span>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" class="uppercase" id="functional-series-cancel" (click)="onCancelClick()">Cancel</button>
+  <button mat-raised-button color="primary" class="uppercase" id="functional-series-ok" (click)="onOkClick()">OK</button>
+</mat-dialog-actions>
