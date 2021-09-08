@@ -51,7 +51,7 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
       {path: '', component: ProductListComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent, pathMatch: 'full'},
       {path: 'admin-panel', component: AdminPanelComponent, pathMatch: 'full'},
-      {path: 'login', component: UserPanelComponent, pathMatch: 'full'},
+      {path: 'user-panel', component: UserPanelComponent, pathMatch: 'full'},
       {path: ':id', component: ProductViewComponent}
     ]),
     HttpClientModule,

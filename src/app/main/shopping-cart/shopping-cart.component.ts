@@ -7,6 +7,8 @@ import {ProductsService} from "../../common/products.service";
 import {Product} from "../../common/entities/product";
 import {zip} from "rxjs";
 import * as _ from "lodash";
+import {OrdersService} from "../../common/orders.service";
+import {ShoppingCartItem} from "../../common/entities/shopping-cart-item";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -15,14 +17,18 @@ import * as _ from "lodash";
 })
 export class ShoppingCartComponent implements OnInit {
   cart: [Product, number][] = [];
+  checkoutItems: ShoppingCartItem[] = [];
   columns: string[] = ['name', 'amount', 'net', 'gross', 'remove'];
+  loggedIn: boolean;
 
   constructor(private store: Store<ShoppingCartSettings>,
-              private productsService: ProductsService) {
+              private productsService: ProductsService,
+              private ordersService: OrdersService) {
     this.store.select(selectSettings).subscribe(settings => {
       if (settings.products.length == 0) {
         this.cart = [];
       } else {
+        this.checkoutItems = settings.products;
         zip(...settings.products.map(product => productsService.getProduct(product.productId)))
           .subscribe(list => this.cart = list.map(item => [item, settings.products.find(product => product.productId == item.id).amount]));
       }
@@ -30,6 +36,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loggedIn = localStorage.getItem("access_token") != undefined;
   }
 
   get netSumPrice(): string {
@@ -56,9 +63,6 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   checkout() {
-    /* TODO:
-    Send message to sales service
-     */
-
+    this.ordersService.createOrder(this.checkoutItems).subscribe();
   }
 }
