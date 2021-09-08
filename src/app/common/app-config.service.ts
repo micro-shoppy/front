@@ -15,4 +15,8 @@ export class AppConfigService {
   get salesResourcesUrl(): string {
     return environment.salesResourcesUrl;
   }
+
+  get usersResourcesUrl(): string {
+    return environment.usersResourcesUrl;
+  }
 }

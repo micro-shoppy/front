@@ -12,21 +12,23 @@ import {MatTableModule} from "@angular/material/table";
 import {MatCardModule} from "@angular/material/card";
 import {ProductListComponent} from './main/product-list/product-list.component';
 import {MatGridListModule} from "@angular/material/grid-list";
-import { ProductComponent } from './main/product-list/product/product.component';
-import { ProductViewComponent } from './main/product-view/product-view.component';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
-import { ShoppingCartComponent } from './main/shopping-cart/shopping-cart.component';
-import { shoppingCartReducer } from "./main/shopping-cart/settings/shopping-cart.reducer";
+import {ProductComponent} from './main/product-list/product/product.component';
+import {ProductViewComponent} from './main/product-view/product-view.component';
+import {StoreModule} from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {environment} from '../environments/environment';
+import {ShoppingCartComponent} from './main/shopping-cart/shopping-cart.component';
+import {shoppingCartReducer} from "./main/shopping-cart/settings/shopping-cart.reducer";
 import {MatButtonModule} from "@angular/material/button";
-import { AdminPanelComponent } from './main/admin-panel/admin-panel.component';
+import {AdminPanelComponent} from './main/admin-panel/admin-panel.component';
 import {FormsModule} from "@angular/forms";
-import { SureDialogComponent } from './main/admin-panel/sure-dialog/sure-dialog.component';
+import {SureDialogComponent} from './main/admin-panel/sure-dialog/sure-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
-import { AddProductComponent } from './main/admin-panel/add-product/add-product.component';
+import {AddProductComponent} from './main/admin-panel/add-product/add-product.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {UserPanelComponent} from './main/user-panel/user-panel.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import {MatInputModule} from "@angular/material/input";
     ShoppingCartComponent,
     AdminPanelComponent,
     SureDialogComponent,
-    AddProductComponent
+    AddProductComponent,
+    UserPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import {MatInputModule} from "@angular/material/input";
       {path: '', component: ProductListComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent, pathMatch: 'full'},
       {path: 'admin-panel', component: AdminPanelComponent, pathMatch: 'full'},
+      {path: 'login', component: UserPanelComponent, pathMatch: 'full'},
       {path: ':id', component: ProductViewComponent}
     ]),
     HttpClientModule,
@@ -62,7 +66,8 @@ import {MatInputModule} from "@angular/material/input";
     FormsModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
