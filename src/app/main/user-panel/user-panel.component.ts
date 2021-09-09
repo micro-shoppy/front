@@ -12,11 +12,13 @@ import {OrdersService} from "../../common/orders.service";
 })
 export class UserPanelComponent implements OnInit {
 
-  email: String;
-  password: String;
+  // email: String;
+  // password: String;
   loggedIn: boolean;
-  user: User;
+  // user: User;
   orders: Order[];
+  loggedUser: User;
+  newUser: User;
 
   constructor(private usersService: UsersService,
               private router: Router,
@@ -33,10 +35,7 @@ export class UserPanelComponent implements OnInit {
   }
 
   createAccount() {
-    this.usersService.createUser(Object.assign(new User(), {
-      email: this.email,
-      password: this.password
-    }))
+    this.usersService.createUser(this.newUser)
       .subscribe(created => {
       if (created) {
         console.log("User created successfully!")
@@ -45,15 +44,12 @@ export class UserPanelComponent implements OnInit {
   }
 
   login() {
-    this.usersService.getAuthentication(Object.assign(new User(), {
-      email: this.email,
-      password: this.password
-    }))
+    this.usersService.getAuthentication(this.loggedUser)
       .subscribe( logged => {
         if (logged) {
           this.usersService.getUser().subscribe(user => {
-            this.user = user;
-            if (this.user.roles.find(role => role.toLowerCase() == 'admin') != null) {
+            this.loggedUser = user;
+            if (this.loggedUser.roles.find(role => role.toLowerCase() == 'admin') != null) {
               this.router.navigate(['/admin-panel']).then(r => console.log(r));
             }
             else {

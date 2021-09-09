@@ -17,7 +17,11 @@ export class UsersService {
   }
 
   createUser(user: User): Observable<boolean> {
-    return this.http.post(this.usersUrl, user).pipe(
+    return this.http.post(this.usersUrl,
+      {
+        email: user.email,
+        password:user.password
+      }).pipe(
       map(() => true),
       catchError(() => of(false)),
       share()
@@ -25,9 +29,10 @@ export class UsersService {
   }
 
   getAuthentication(user: User): Observable<boolean> {
-    return this.http.post(this.usersUrl + "/authenticate", {
-      email: user.email,
-      password: user.password
+    return this.http.post(this.usersUrl + "/authenticate",
+      {
+        email: user.email,
+        password: user.password
     }).pipe(
       tap(data => localStorage.setItem("access_token", data.toString())),
       map(() => true),
