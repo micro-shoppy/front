@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  get isAdmin(): boolean {
+    return (localStorage.getItem("isAdmin") ?? 'false') == 'true';
   }
 
 }

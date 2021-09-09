@@ -49,10 +49,12 @@ export class UserPanelComponent implements OnInit {
         if (logged) {
           this.usersService.getUser().subscribe(user => {
             this.loggedUser = user;
-            if (this.loggedUser.roles.find(role => role.toLowerCase() == 'admin') != null) {
+            if (this.loggedUser.isAdmin) {
+              localStorage.setItem("isAdmin", 'true');
               this.router.navigate(['/admin-panel']).then(r => console.log(r));
             }
             else {
+              localStorage.setItem("isAdmin", 'false');
               this.loggedIn = logged;
               window.location.reload()
             }
