@@ -77,6 +77,7 @@ export class UserPanelComponent implements OnInit {
   }
 
   logout() {
-    localStorage.clear()
+    localStorage.clear();
+    this.router.navigate(['/']).then(r => console.log(r));
   }
 }

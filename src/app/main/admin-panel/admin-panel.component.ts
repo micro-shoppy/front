@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {SureDialogComponent} from "./sure-dialog/sure-dialog.component";
 import {filter, tap} from "rxjs/operators";
 import {AddProductComponent} from "./add-product/add-product.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-panel',
@@ -15,6 +16,7 @@ export class AdminPanelComponent implements OnInit {
   products: CatalogProduct[] = [];
 
   constructor(private dialog: MatDialog,
+              private router: Router,
               private catalogService: CatalogProductsService) { }
 
   ngOnInit(): void {
@@ -47,5 +49,6 @@ export class AdminPanelComponent implements OnInit {
 
   logout() {
     localStorage.clear();
+    this.router.navigate(['/']).then(r => console.log(r));
   }
 }
