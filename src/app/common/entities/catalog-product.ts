@@ -1,5 +1,5 @@
 export class CatalogProduct {
-  readonly productId: string;
+  readonly id: string;
   readonly name: string;
   readonly description: string;
 }

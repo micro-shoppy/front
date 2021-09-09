@@ -30,7 +30,7 @@ export class AdminPanelComponent implements OnInit {
     dialogRef.afterClosed()
       .pipe(filter(result => result))
       .subscribe(() => {
-        this.catalogService.deleteProduct(product.productId).subscribe(() => this.getCatalogProducts());
+        this.catalogService.deleteProduct(product.id).subscribe(() => this.getCatalogProducts());
       })
   }
 
