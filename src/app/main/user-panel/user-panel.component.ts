@@ -53,11 +53,11 @@ export class UserPanelComponent implements OnInit {
               this.router.navigate(['/admin-panel']).then(r => console.log(r));
             }
             else {
+              this.loggedIn = logged;
               window.location.reload()
             }
           });
         }
       });
-
   }
 }
