@@ -63,6 +63,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   checkout() {
+    this.checkoutItems.forEach(item => console.log(item));
     this.ordersService.createOrder(this.checkoutItems).subscribe();
   }
 }

@@ -64,6 +64,6 @@ export class UserPanelComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem("access_token");
+    localStorage.clear()
   }
 }

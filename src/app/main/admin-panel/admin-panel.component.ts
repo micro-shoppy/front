@@ -46,6 +46,6 @@ export class AdminPanelComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem("access_token");
+    localStorage.clear();
   }
 }
