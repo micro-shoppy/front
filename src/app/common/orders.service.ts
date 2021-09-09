@@ -17,7 +17,7 @@ export class OrdersService {
   }
 
   createOrder(items: ShoppingCartItem[]): Observable<boolean> {
-    const order = shoppingCartItemsToOrder(items).products;
+    const order = shoppingCartItemsToOrder(items).orderedProducts;
     console.log(order);
     return this.http.post(this.orderUrl, {
       orderedProducts: order
