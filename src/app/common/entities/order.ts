@@ -10,5 +10,6 @@ export class Order {
 export function shoppingCartItemsToOrder(shoppingCartItems: ShoppingCartItem[]): Order {
   const order = new Order();
   shoppingCartItems.forEach( item => order.products.set(item.productId, item.amount));
+  console.log(order);
   return order;
 }
