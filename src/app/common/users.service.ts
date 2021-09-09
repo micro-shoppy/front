@@ -4,6 +4,7 @@ import {AppConfigService} from "./app-config.service";
 import {User} from "./entities/user";
 import {Observable, of} from "rxjs";
 import {catchError, map, share, tap} from "rxjs/operators";
+import {TokenDto} from "./entities/token-dto";
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,8 @@ export class UsersService {
         email: user.email,
         password: user.password
     }).pipe(
-      tap(data => localStorage.setItem("access_token", data.toString())),
+      map(data => Object.assign(new TokenDto(), data)),
+      tap(tokenDto => localStorage.setItem("access_token", tokenDto.token.toString())),
       map(() => true),
       catchError(() => of(false)),
       share()
