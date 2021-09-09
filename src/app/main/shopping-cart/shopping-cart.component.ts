@@ -26,6 +26,7 @@ export class ShoppingCartComponent implements OnInit {
               private ordersService: OrdersService) {
     this.store.select(selectSettings).subscribe(settings => {
       if (settings.products.length == 0) {
+        this.checkoutItems = []
         this.cart = [];
       } else {
         this.checkoutItems = settings.products;
