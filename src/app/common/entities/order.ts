@@ -4,19 +4,6 @@ export class Order {
   id: string;
   orderedProducts: {} = {};
   status: number;
-
-  get statusString(): String {
-    switch (this.status) {
-      case 0:
-        return "placed";
-      case 1:
-        return "billed";
-      case 2:
-        return "completed";
-      default:
-        return "unknown"
-    }
-  }
 }
 
 

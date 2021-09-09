@@ -2,7 +2,7 @@
   <button (click)="logout()" color="primary" mat-raised-button>Log out</button>
   <!--  Show all orders-->
   <div *ngFor="let order of orders">
-    <h2>{{order.id}}: {{order.statusString}}</h2>
+    <h2>{{order.id}}: {{statusString(order.status)}}</h2>
   </div>
 
 </div>

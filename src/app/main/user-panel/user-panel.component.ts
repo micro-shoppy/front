@@ -63,6 +63,19 @@ export class UserPanelComponent implements OnInit {
       });
   }
 
+  statusString(status: number): String {
+    switch (status) {
+      case 0:
+        return "placed";
+      case 1:
+        return "billed";
+      case 2:
+        return "completed";
+      default:
+        return "unknown"
+    }
+  }
+
   logout() {
     localStorage.clear()
   }
