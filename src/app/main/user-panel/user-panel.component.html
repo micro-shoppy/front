@@ -1,4 +1,5 @@
 <div *ngIf="loggedIn; else tryToLog">
+  <button (click)="logout()" color="primary" mat-raised-button>Log out</button>
   <!--  Show all orders-->
   <div *ngFor="let order of orders">
     <h2>{{order.orderId}}: {{order.status}}</h2>

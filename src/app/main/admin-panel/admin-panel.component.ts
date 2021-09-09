@@ -18,6 +18,10 @@ export class AdminPanelComponent implements OnInit {
               private catalogService: CatalogProductsService) { }
 
   ngOnInit(): void {
+    this.getCatalogProducts()
+  }
+
+  getCatalogProducts(): void {
     this.catalogService.getAllCatalogProducts().subscribe(fetchedProducts => this.products = fetchedProducts);
   }
 
@@ -26,7 +30,7 @@ export class AdminPanelComponent implements OnInit {
     dialogRef.afterClosed()
       .pipe(filter(result => result))
       .subscribe(() => {
-        this.catalogService.deleteProduct(product.productId).subscribe();
+        this.catalogService.deleteProduct(product.productId).subscribe(() => this.getCatalogProducts());
       })
   }
 
@@ -37,8 +41,11 @@ export class AdminPanelComponent implements OnInit {
         filter(result => result !== undefined),
         tap(() => console.log('Trying to add item...')))
       .subscribe( product => {
-        this.catalogService.addProduct(product).subscribe();
+        this.catalogService.addProduct(product).subscribe(() => this.getCatalogProducts());
       })
   }
 
+  logout() {
+    localStorage.removeItem("access_token");
+  }
 }
