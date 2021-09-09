@@ -17,8 +17,8 @@ export class UserPanelComponent implements OnInit {
   loggedIn: boolean;
   // user: User;
   orders: Order[];
-  loggedUser: User;
-  newUser: User;
+  loggedUser: User = Object.assign(new User(), {email: "", password: ""});
+  newUser: User = Object.assign(new User(), {email: "", password: ""});
 
   constructor(private usersService: UsersService,
               private router: Router,
