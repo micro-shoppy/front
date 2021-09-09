@@ -17,7 +17,9 @@ export class OrdersService {
   }
 
   createOrder(items: ShoppingCartItem[]): Observable<boolean> {
-    return this.http.post(this.orderUrl, shoppingCartItemsToOrder(items).products, this.env.getAuthHeader())
+    const order = shoppingCartItemsToOrder(items).products;
+    console.log(order);
+    return this.http.post(this.orderUrl, order, this.env.getAuthHeader())
       .pipe(
         map(() => true),
         catchError(() => of(false)),
