@@ -49,6 +49,7 @@ export class CatalogProductsService {
     return this.http.post(this.catalogURL, {
       name: product.name,
       description: product.description,
+      cost: product.cost,
       netPrice: product.netPrice,
       taxPercentage: product.taxPercentage
     }, this.env.getAuthHeader())

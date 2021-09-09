@@ -7,6 +7,7 @@ export class Product {
   description: string;
   netPrice: number;
   taxPercentage: number;
+  cost: number | undefined;
 
   static readonly placeholder: Product = Object.assign(new Product(), {
     name: 'Loading...',
