@@ -29,7 +29,8 @@ export function mergeProduct(catalogProduct: CatalogProduct, salesProduct: Sales
       description: catalogProduct.description,
       netPrice: salesProduct.netPrice,
       taxPercentage: salesProduct.taxPercentage,
-      id: salesProduct.productId
+      id: salesProduct.productId,
+      cost: salesProduct.cost
     });
   }
   throw new Error('Catalog product and Sales product have different ids, thus can\'t be merged')
