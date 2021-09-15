@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {SureDialogComponent} from "./sure-dialog/sure-dialog.component";
 import {filter, tap} from "rxjs/operators";
 import {AddProductComponent} from "./add-product/add-product.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-admin-panel',
@@ -15,9 +16,14 @@ export class AdminPanelComponent implements OnInit {
   products: CatalogProduct[] = [];
 
   constructor(private dialog: MatDialog,
+              private router: Router,
               private catalogService: CatalogProductsService) { }
 
   ngOnInit(): void {
+    this.getCatalogProducts()
+  }
+
+  getCatalogProducts(): void {
     this.catalogService.getAllCatalogProducts().subscribe(fetchedProducts => this.products = fetchedProducts);
   }
 
@@ -26,7 +32,7 @@ export class AdminPanelComponent implements OnInit {
     dialogRef.afterClosed()
       .pipe(filter(result => result))
       .subscribe(() => {
-        this.catalogService.deleteProduct(product.productId).subscribe();
+        this.catalogService.deleteProduct(product.id).subscribe(() => this.getCatalogProducts());
       })
   }
 
@@ -37,8 +43,12 @@ export class AdminPanelComponent implements OnInit {
         filter(result => result !== undefined),
         tap(() => console.log('Trying to add item...')))
       .subscribe( product => {
-        this.catalogService.addProduct(product).subscribe();
+        this.catalogService.addProduct(product).subscribe(() => this.getCatalogProducts());
       })
   }
 
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/']).then(r => console.log(r));
+  }
 }

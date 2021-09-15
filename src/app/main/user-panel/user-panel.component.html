@@ -1,0 +1,73 @@
+<div *ngIf="loggedIn; else tryToLog">
+  <button (click)="logout()" color="primary" mat-raised-button>Log out</button>
+  <!--  Show all orders-->
+  <div *ngFor="let order of orders">
+    <h2>{{order.id}}: {{statusString(order.status)}}</h2>
+  </div>
+
+</div>
+<ng-template #tryToLog>
+  <div
+    style="display: flex; flex-direction: row; justify-content: space-evenly; align-items: stretch; align-content: center; width: 100%">
+    <mat-card style="flex: 1; margin: 5%; padding: 3%">
+      <mat-card-header>
+        <mat-card-title>Create account</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form>
+          <table>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input [(ngModel)]="newUser.email" matInput name="email" placeholder="Email" required>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input [(ngModel)]="newUser.password" matInput name="password" placeholder="Password" required
+                         type="password">
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="createAccount()" color="primary" mat-raised-button>Create account</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card style="flex: 1; margin: 5%; padding: 3%">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form>
+          <table>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input [(ngModel)]="loggedUser.email" matInput name="email" placeholder="Email" required>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field>
+                  <input [(ngModel)]="loggedUser.password" matInput name="password" placeholder="Password" required
+                         type="password">
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button (click)="login()" color="primary" mat-raised-button>Login</button>
+      </mat-card-actions>
+    </mat-card>
+
+  </div>
+</ng-template>

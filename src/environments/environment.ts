@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  catalogResourcesUrl: 'http://localhost:5000/catalog',
-  salesResourcesUrl: 'http://localhost:8091/sales'
+  catalogResourcesUrl: 'http://localhost:8081/catalog',
+  salesResourcesUrl: 'http://localhost:8091/sales',
+  usersResourcesUrl: 'http://localhost:5000/users',
+  ordersResourcesUrl: 'http://localhost:8091/orders'
 };
 
 /*

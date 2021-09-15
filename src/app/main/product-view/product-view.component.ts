@@ -31,7 +31,10 @@ export class ProductViewComponent implements OnInit, OnDestroy {
     this.route.params.subscribe(params => {
       this.productId = params['id'];
       this.product$ = this.productService.getProduct(this.productId).subscribe(
-        product => this.product = product,
+        product => {
+          console.log(product)
+          this.product = product
+        },
         error => {
           if (error instanceof HttpErrorResponse) {
             if (error.status === 404) {
@@ -47,8 +50,7 @@ export class ProductViewComponent implements OnInit, OnDestroy {
   }
 
   addToCart(item: string): void {
-    console.log(`Added ${item} to cart`)
-    this.store.dispatch(new AddToCart({item: item}));
+    this.store.dispatch(new AddToCart({item: this.productId}));
   }
 
 }

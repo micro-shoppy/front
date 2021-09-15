@@ -35,7 +35,7 @@ export class CatalogProductsService {
   public deleteProduct(productId: string): Observable<any> {
     const url = `${this.catalogURL}/${productId}`;
     console.log(url)
-    return this.http.delete(url)
+    return this.http.delete(url, this.env.getAuthHeader())
       .pipe(
         map(() => {
           console.log(`Product ${productId} removed successfully!`)
@@ -49,9 +49,10 @@ export class CatalogProductsService {
     return this.http.post(this.catalogURL, {
       name: product.name,
       description: product.description,
+      cost: product.cost,
       netPrice: product.netPrice,
       taxPercentage: product.taxPercentage
-    })
+    }, this.env.getAuthHeader())
       .pipe(
         map(() => true),
         tap(() => console.log(`Product ${product.id} added successfully`)),

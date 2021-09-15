@@ -41,7 +41,7 @@
     <div style="text-align: right; margin-left: 25%">
       <h3>Net sum: <i class="fas fa-dollar-sign"></i> {{netSumPrice}}</h3>
       <h2>Gross sum: <i class="fas fa-dollar-sign"></i> {{grossSumPrice}}</h2>
-      <button mat-raised-button color="primary" (click)="checkout()">Checkout <i class="fas fa-angle-double-right"></i></button>
+      <button mat-raised-button color="primary" (click)="checkout()" [disabled]="!loggedIn">Checkout <i class="fas fa-angle-double-right"></i></button>
     </div>
   </div>
 </ng-template>

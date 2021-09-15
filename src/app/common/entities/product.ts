@@ -7,6 +7,7 @@ export class Product {
   description: string;
   netPrice: number;
   taxPercentage: number;
+  cost: number | undefined;
 
   static readonly placeholder: Product = Object.assign(new Product(), {
     name: 'Loading...',
@@ -22,13 +23,14 @@ export class Product {
 }
 
 export function mergeProduct(catalogProduct: CatalogProduct, salesProduct: SalesProduct): Product {
-  if (catalogProduct.productId === salesProduct.productId) {
+  if (catalogProduct.id === salesProduct.id) {
     return Object.assign(new Product(), {
       name: catalogProduct.name,
       description: catalogProduct.description,
       netPrice: salesProduct.netPrice,
       taxPercentage: salesProduct.taxPercentage,
-      id: salesProduct.productId
+      id: salesProduct.id,
+      cost: salesProduct.cost
     });
   }
   throw new Error('Catalog product and Sales product have different ids, thus can\'t be merged')
@@ -38,7 +40,7 @@ export function mergeProducts(catalogProducts: CatalogProduct[], salesProducts: 
   if (catalogProducts.length > 0 && salesProducts.length > 0 && catalogProducts.length == salesProducts.length) {
     let products = [];
     catalogProducts.forEach(c =>
-      products = [...products, mergeProduct(c, salesProducts.find(s => s.productId === c.productId))])
+      products = [...products, mergeProduct(c, salesProducts.find(s => s.id === c.id))])
     return products;
   }
   else {
